@@ -68,23 +68,20 @@ class LinkedList {
         return this.printList()
     }
     remove(index){
+        // check params
         if(index === 0){
             this.head = this.head.next;
             if(this.length === 1){
                 this.tail = null;
             }
             this.length--
-            return this; 
-        }else{
-            const leader = this.traverseToIndex(index-1);
-            leader.next = leader.next.next;
-            if(index === this.length - 1){
-                this.tail = leader.next;
-            }
-            this.length--
             return this;
         }
-
+        const leader = this.traverseToIndex(index-1);
+        const unwantedNode = leader.next;
+        leader.next = unwantedNode.next;
+        this.length--;
+        return this.printList();
     }
     traverseToIndex(index){
         //check params
@@ -107,9 +104,10 @@ mylinkedList.append(5);
 mylinkedList.append(16);
 mylinkedList.prepend(1);
 console.log(mylinkedList.printList())
-mylinkedList.insert(2, 22)
+mylinkedList.insert(2, 99)
+mylinkedList.insert(20, 88)
 console.log(mylinkedList.printList())
-mylinkedList.remove(4)
+mylinkedList.remove(0)
 
 console.log(mylinkedList.printList())
 
