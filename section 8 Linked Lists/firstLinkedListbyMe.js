@@ -52,45 +52,59 @@ class LinkedList {
     }
 
     insert(index, value) {
-        //check params
-        if(index >= this.length){
-            return this.append(value)
-        }else if(index === 0){
-            return this.prepend(value)
+        if (index < 0 || index > this.length) {
+            throw new Error('Index out of bounds')
         }
-
-        const newNode = new Node(value);
-        const leader = this.traverseToIndex(index-1);
-        const holdingPointer = leader.next;
-        leader.next = newNode;
-        newNode.next = holdingPointer;
-        this.length++;
-        return this.printList()
+        const newNode = new Node(value)
+        let currentNode = this.head;
+        let count = 0;
+        while (currentNode !== null) {
+            currentNode = currentNode.next;
+            count++;
+            if (index === 0) {
+                newNode.next = this.head;
+                this.head = newNode;
+                if (this.length === 0) {
+                    this.tail = newNode;
+                }
+                return this;
+            }
+            else if (index === this.length) {
+                this.tail.next = newNode
+                this.tail = newNode;
+                return this;
+            }
+            else if (count === index - 1) {
+                newNode.next = currentNode.next
+                currentNode.next = newNode
+                this.length++
+                return this;
+            }
+        }
     }
-    remove(index){
-        if(index === 0){
+    remove(index) {
+        if (index === 0) {
             this.head = this.head.next;
-            if(this.length === 1){
+            if (this.length === 1) {
                 this.tail = null;
             }
             this.length--
-            return this; 
-        }else{
-            const leader = this.traverseToIndex(index-1);
+            return this;
+        } else {
+            const leader = this.traverseToIndex(index - 1);
             leader.next = leader.next.next;
-            if(index === this.length - 1){
+            if (index === this.length - 1) {
                 this.tail = leader.next;
             }
             this.length--
             return this;
         }
-
     }
-    traverseToIndex(index){
+    traverseToIndex(index) {
         //check params
         let counter = 0;
         let currentNode = this.head;
-        while(counter !== index){
+        while (counter !== index) {
             currentNode = currentNode.next;
             counter++;
         }
@@ -99,7 +113,6 @@ class LinkedList {
 
 }
 
-
 const mylinkedList = new LinkedList(10)
 
 
@@ -107,9 +120,7 @@ mylinkedList.append(5);
 mylinkedList.append(16);
 mylinkedList.prepend(1);
 console.log(mylinkedList.printList())
-mylinkedList.insert(2, 22)
-console.log(mylinkedList.printList())
-mylinkedList.remove(4)
+mylinkedList.insert(5, 100)
 
 console.log(mylinkedList.printList())
 
