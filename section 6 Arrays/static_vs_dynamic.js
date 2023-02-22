@@ -1,0 +1,3 @@
+//static arrays 
+
+//Dynamic arrays
