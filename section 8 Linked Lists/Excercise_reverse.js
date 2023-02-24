@@ -97,7 +97,7 @@ class LinkedList {
     // reverse(){
         // if(!this.head.next){
         //     return this.head
-        // }
+        // } 
     //     let prev = null;
     //     let current = this.head;
     //     while(current !== null){
