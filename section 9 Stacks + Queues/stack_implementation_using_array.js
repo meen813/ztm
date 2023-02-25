@@ -1,56 +1,28 @@
-class Array{
-    constructor(){
-        this.length = 0;
-        this.data = {}
-    }
-}
-
-
 class Stack{
     constructor(){
-        this.top = null;
-        this.bottom = null;
-        this.length = 0; 
+        this.array = [];
     }
-    peek(){ //to see the very top of the stack
-        return this.top
+    peek(){
+        return this.array[this.array.length-1]
 
     }
     push(value){
-        const newNode = new Node(value);
-        if(this.length === 0 ){
-            this.top = newNode;
-            this.bottom = newNode;
-        }else{
-            const holdingPointer = this.top;
-            this.top = newNode;
-            this.top.next = holdingPointer;
-        }
-        this.length++;
+        this.array.push(value)
         return this;
     }
     pop(){
-        if(!this.top){
-            return null;
-        }
-        if(this.length === 1){
-            this.bottom = null;
-        }
-        const holdingPointer = this.top;
-        this.top = this.top.next;
-        this.length--;
-        return holdingPointer;
+        this.array.pop();
+        return this;
     }
-
-    printList() {
-        const array = [];
-        let currentNode = this.top;
-        while (currentNode !== null) {
-            array.push(currentNode.value);
-            currentNode = currentNode.next;
-        }
-        return array;
-    }
-
 }
 const myStack = new Stack();
+
+myStack.push('google')
+myStack.push('Discord')
+myStack.push('udemy')
+console.log(myStack.peek())
+console.log(myStack)
+myStack.pop()
+myStack.pop()
+
+console.log(myStack)
