@@ -5,7 +5,6 @@ class Node{
     }
 }
 
-
 class Stack{
     constructor(){
         this.top = null;
@@ -21,33 +20,25 @@ class Stack{
         if(this.length === 0 ){
             this.top = newNode;
             this.bottom = newNode;
-            this.length++;
-            return this.legnth;
-        }else if(this.length === 1){
-            this.bottom = this.top
+        }else{
+            const holdingPointer = this.top;
             this.top = newNode;
-            newNode.next = this.bottom;
-            this.length++;
-            return this.legnth;
+            this.top.next = holdingPointer;
         }
-            let current = this.top;
-            this.top = newNode;
-            newNode.next = current;
-            this.length++;
-            return this.legnth;
+        this.length++;
+        return this;
     }
     pop(){
-        if(this.length === 1){
-            const poppedNode = this.top;
-            this.top = null;
-            this.bottom = null;
-            this.length--;
-            return poppedNode.value;
+        if(!this.top){
+            return null;
         }
-        const poppedNode = this.top;
+        if(this.length === 1){
+            this.bottom = null;
+        }
+        const holdingPointer = this.top;
         this.top = this.top.next;
         this.length--;
-        return poppedNode.value;
+        return holdingPointer;
     }
 
     printList() {
@@ -66,8 +57,9 @@ const myStack = new Stack();
 myStack.push('Discord')
 myStack.push('Udemy')
 myStack.push('Google')
+myStack.pop()
+myStack.pop()
 
-console.log(myStack.peek())
-
-
+console.log(myStack.printList())
+myStack.pop()
 console.log(myStack.printList())

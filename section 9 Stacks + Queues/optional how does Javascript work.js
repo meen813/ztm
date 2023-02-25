@@ -1,3 +1,5 @@
-What is A Program?
--allocate memory
--parse and execute
+// What is A Program?
+// -allocate memory
+// -parse and execute  
+
+
