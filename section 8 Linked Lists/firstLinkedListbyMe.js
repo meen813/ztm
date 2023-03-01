@@ -101,7 +101,6 @@ class LinkedList {
         }
     }
     traverseToIndex(index) {
-        //check params
         let counter = 0;
         let currentNode = this.head;
         while (counter !== index) {

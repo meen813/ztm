@@ -1,53 +1,48 @@
-var MyQueue = function() {
-    this.mainStack = [];
-    this.subStack = [];
-};
-
-/** 
- * @param {number} x
- * @return {void}
- */
-MyQueue.prototype.push = function(x) {
-    this.mainStack.push(x);
-};
-/**
- * @return {number}
- */
-MyQueue.prototype.pop = function() {
-    if(this.subStack.length === 0){
-        while(this.mainStack.length > 0){
-            this.subStack.push(this.mainStack.pop());
-        }
+class CrazyQueue {
+    constructor() {
+        this.firstStack = [];
+        this.lastStack = [];
     }
-    return this.subStack.pop()
 
-};
-
-/**
- * @return {number}
- */
-MyQueue.prototype.peek = function() {
-    if(this.subStack.length === 0){
-        while(this.mainStack.length > 0){
-            this.subStack.push(this.mainStack.pop());
+    enqueue(value) {
+        const length = this.firstStack.length;
+        for (let i = 0; i < length; i++) {
+            this.lastStack.push(this.firstStack.pop());
         }
+        this.lastStack.push(value);
+        return this;
     }
-    return this.subStack[this.subStack.length -1]
-    
-};
 
-/**
- * @return {boolean}
- */
-MyQueue.prototype.empty = function() {
-    return this.mainStack.length === 0 && this.subStack.length === 0
-};
+    dequeue() {
+        const length = this.lastStack.length;
+        for (let i = 0; i < length; i++) {
+            this.firstStack.push(this.lastStack.pop());
+        }
+        this.firstStack.pop();
+        return this;
+    }
+    peek() {
+        if (this.lastStack.length > 0) {
+            return this.lastStack[0];
+        }
+        return this.firstStack[this.firstStack.length - 1];
+    }
+}
 
-/** 
- * Your MyQueue object will be instantiated and called as such:
- * var obj = new MyQueue()
- * obj.push(x)
- * var param_2 = obj.pop()
- * var param_3 = obj.peek()
- * var param_4 = obj.empty()
- */
+const myQueue = new CrazyQueue();
+myQueue.peek();
+myQueue.enqueue('Joy');
+myQueue.enqueue('Matt');
+myQueue.enqueue('Pavel');
+console.log(this.firstStack)
+console.log(this.lastStack)
+
+// // console.log(myQueue);
+// myQueue.peek();
+// myQueue.dequeue();
+// myQueue.dequeue();
+// myQueue.dequeue();
+// myQueue.peek();
+
+// console.log(myQueue);
+
