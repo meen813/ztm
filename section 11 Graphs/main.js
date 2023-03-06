@@ -13,3 +13,13 @@ const graph3 = {
     3: [1, 1, 0, 1],
     4: [0, 1, 1, 0]
 }
+
+
+let object1 = {};
+let node = '1';
+
+object1[node] = undefined;
+object1[node] = '100'
+console.log(object1)
+
+
