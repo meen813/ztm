@@ -22,4 +22,4 @@ object1[node] = undefined;
 object1[node] = '100'
 console.log(object1)
 
-
+    
