@@ -1,6 +1,6 @@
 const numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
 
-function mergeSort(array) {
+function mergeSort(array) { //recursion 
     if (array.length === 1) {
         return array
     }
@@ -26,8 +26,12 @@ function merge(left, right) {
         if(left[leftIndex] < right[rightIndex]){
             result.push(left[leftIndex]);
             leftIndex++
+        } else {
+            result.push(right[rightIndex]);
+            rightIndex++
         }
     }
+    return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
 }
 
 
