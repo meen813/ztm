@@ -13,7 +13,7 @@ function fibonacciIterative(n){ //O(n)
     return arr[n]
 }
 
-console.log(fibonacciIterative(6))
+console.log(fibonacciIterative(1))
 
 
 function fibonacciRecursive(n) { // O(2^N)

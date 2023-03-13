@@ -13,7 +13,7 @@ const graph3 = {
     3: [1, 1, 0, 1],
     4: [0, 1, 1, 0]
 }
-
+ 
 
 let object1 = {};
 let node = '1';
