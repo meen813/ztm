@@ -192,6 +192,28 @@ function traverseInOrder(node, list) {
     return list;
 }
 
+function traversePreOrder(node, list){
+    list.push(node.value)
+    if(node.left){
+        traversePreOrder(node.left, list)
+    }
+    if(node.right){
+        traversePreOrder(node.right, list)
+    }
+    return list;
+}
+
+function traversePostOrder(node, list){
+    if(node.left){
+        traversePostOrder(node.left, list)
+    }
+    if(node.right){
+        traversePostOrder(node.right, list)
+    }
+    list.push(node.value)
+    return list;
+}
+
 //     9
 //  4     20
 //1  6  15  170
@@ -210,7 +232,9 @@ tree.insert(20)
 tree.insert(170)
 tree.insert(15)
 tree.insert(1)
-console.log(tree.DFSInOrder())
+// console.log(tree.DFSInOrder())
+// console.log(tree.DFSPreOrder())
+console.log(tree.DFSPostOrder())
 
 //     9
 //  4     20
