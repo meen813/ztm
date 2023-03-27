@@ -181,7 +181,6 @@ class BinarySearchTree {
 }
 
 function traverseInOrder(node, list) {
-    console.log(node.value)
     if(node.left){
         traverseInOrder(node.left, list);
     }
@@ -232,8 +231,8 @@ tree.insert(20)
 tree.insert(170)
 tree.insert(15)
 tree.insert(1)
-// console.log(tree.DFSInOrder())
-// console.log(tree.DFSPreOrder())
+console.log(tree.DFSInOrder())
+console.log(tree.DFSPreOrder())
 console.log(tree.DFSPostOrder())
 
 //     9
