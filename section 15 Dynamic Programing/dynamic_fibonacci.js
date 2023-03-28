@@ -2,7 +2,7 @@
 
 
 let calculations = 0;
-function fibonacci(n) {
+function fibonacci(n) { //O(2^n)
     if(n < 2){
         return n
     }
@@ -10,7 +10,7 @@ function fibonacci(n) {
 }
 // console.log(fibonacci(30))
 
-function fibonacciMaster(){
+function fibonacciMaster(){ //O(n)
     let cache = {};
     return function fib(n){
         calculations++;
@@ -26,10 +26,21 @@ function fibonacciMaster(){
         }
     }
 }
-
 const dynamic = fibonacciMaster();
-console.log(dynamic(10))
 
+
+
+function fibonacciMaster2(n) {
+    let answer = [0, 1];
+    for (let i = 2; i <= n; i++) {
+        answer.push(answer[i-2] + answer[i-1]);
+    }
+    return answer.pop();
+}
+
+
+console.log(dynamic(10))
+console.log()
 console.log('we did ' + calculations + ' calculations')
 
 
